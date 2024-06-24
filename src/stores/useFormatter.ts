@@ -74,7 +74,7 @@ export const useFormatter = defineStore('formatter', {
     async fetchDenomMetadata(denom: string) {
       if(this.loading.includes(denom)) return 
       this.loading.push(denom)
-      const asset = await get(`https://metadata.ping.pub/metadata/${denom}`) as Asset
+      const asset = await get(`https://metadata.Maniscan/metadata/${denom}`) as Asset
       this.ibcMetadata[denom] = asset
     },
     priceInfo(denom: string) {

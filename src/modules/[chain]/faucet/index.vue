@@ -43,7 +43,7 @@ const validAddress = computed(() => {
 });
 
 const faucetUrl = computed(() => {
-    return `https://faucet.ping.pub/${chainStore.current?.chainName}`;
+    return `https://faucet.Maniscan/${chainStore.current?.chainName}`;
     // return `http://localhost:3000/${chainStore.current?.chainName}`;
 });
 
@@ -117,7 +117,7 @@ onMounted(() => {
                 Tokens</button>
         </div>
 
-        <AdBanner id="home-banner-ad" unit="banner" />
+        
 
         <div class="bg-base-100 my-5 px-4 pt-3 pb-4 rounded shadow">
             <h2 class="card-title">Enable Faucet</h2>
@@ -131,7 +131,7 @@ onMounted(() => {
                     <pre class=" text-xs text-red-500">{{ configChecker }}</pre>
                     <pre></pre>
                     <a class=" btn-ghost text-white rounded-md p-2 ml-4"
-                        href="https://github.com/ping-pub/ping.pub/blob/main/faucet.md">Update</a>
+                        href="https://github.com/ping-pub/Maniscan/blob/main/faucet.md">Update</a>
                 </div>
 
                 <span class="text-base"> 2. Fund the faucet account</span>
@@ -160,7 +160,7 @@ onMounted(() => {
                 </div>
                 <p class="py-2">
                 <div>
-                    <AdBanner id="popup-ad" unit="popup" />
+            
                 </div>
                 </p>
             </div>

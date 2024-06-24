@@ -13,7 +13,12 @@ import { useBaseStore, useBlockchain } from '@/stores';
 
 import NavBarI18n from './NavBarI18n.vue';
 import NavBarWallet from './NavBarWallet.vue';
-import type { NavGroup, NavLink, NavSectionTitle, VerticalNavItems } from '../types';
+import type {
+  NavGroup,
+  NavLink,
+  NavSectionTitle,
+  VerticalNavItems,
+} from '../types';
 import dayjs from 'dayjs';
 
 const dashboard = useDashboard();
@@ -23,10 +28,10 @@ blockchain.randomSetupEndpoint();
 const baseStore = useBaseStore();
 
 const current = ref(''); // the current chain
-const temp = ref('')
+const temp = ref('');
 blockchain.$subscribe((m, s) => {
-  if(current.value ===s.chainName && temp.value != s.endpoint.address) {
-    temp.value = s.endpoint.address
+  if (current.value === s.chainName && temp.value != s.endpoint.address) {
+    temp.value = s.endpoint.address;
     blockchain.initial();
   }
   if (current.value != s.chainName) {
@@ -43,46 +48,48 @@ const changeOpen = (index: Number) => {
     sidebarOpen.value = !sidebarOpen.value;
   }
 };
-const showDiscord = window.location.host.search('ping.pub') > -1;
+const showDiscord = window.location.host.search('Maniscan') > -1;
 
 function isNavGroup(nav: VerticalNavItems | any): nav is NavGroup {
-   return (<NavGroup>nav).children !== undefined;
+  return (<NavGroup>nav).children !== undefined;
 }
 function isNavLink(nav: VerticalNavItems | any): nav is NavLink {
-   return (<NavLink>nav).to !== undefined;
+  return (<NavLink>nav).to !== undefined;
 }
 function isNavTitle(nav: VerticalNavItems | any): nav is NavSectionTitle {
-   return (<NavSectionTitle>nav).heading !== undefined;
+  return (<NavSectionTitle>nav).heading !== undefined;
 }
 function selected(route: any, nav: NavLink) {
-  const b = route.path === nav.to?.path || route.path.startsWith(nav.to?.path) && nav.title.indexOf('dashboard') === -1
-  return b
+  const b =
+    route.path === nav.to?.path ||
+    (route.path.startsWith(nav.to?.path) &&
+      nav.title.indexOf('dashboard') === -1);
+  return b;
 }
 const blocktime = computed(() => {
-  return dayjs(baseStore.latest?.block?.header?.time)
+  return dayjs(baseStore.latest?.block?.header?.time);
 });
 
 const behind = computed(() => {
-  const current = dayjs().subtract(10, 'minute')
-  return blocktime.value.isBefore(current)
+  const current = dayjs().subtract(10, 'minute');
+  return blocktime.value.isBefore(current);
 });
 
-dayjs()
-
+dayjs();
 </script>
 
 <template>
-  <div class="bg-gray-100 dark:bg-[#171d30]">
+  <div class="bg-[#e2e8f0] dark:bg-[#202020]">
     <!-- sidebar -->
     <div
-      class="w-64 fixed z-50 left-0 top-0 bottom-0 overflow-auto bg-base-100 border-r border-gray-100 dark:border-gray-700"
+      class="w-64 fixed z-50 left-0 top-0 bottom-0 overflow-auto bg-[#ffffff] dark:bg-[#2B2B2B] border-r border-gray-100 dark:border-gray-700"
       :class="{ block: sidebarShow, 'hidden xl:!block': !sidebarShow }"
     >
       <div class="flex justify-between mt-1 pl-4 py-4 mb-1">
         <RouterLink to="/" class="flex items-center">
           <img class="w-10 h-10" src="../../assets/logo.svg" />
           <h1 class="flex-1 ml-3 text-2xl font-semibold dark:text-white">
-            Ping.pub
+            Maniscan
           </h1>
         </RouterLink>
         <div
@@ -102,7 +109,7 @@ dayjs()
           :tabindex="index"
           class="collapse"
           :class="{
-            'collapse-arrow':index > 0 && item?.children?.length > 0,
+            'collapse-arrow': index > 0 && item?.children?.length > 0,
             'collapse-open': index === 0 && sidebarOpen,
             'collapse-close': index === 0 && !sidebarOpen,
           }"
@@ -114,7 +121,7 @@ dayjs()
             @click="changeOpen(index)"
           />
           <div
-            class="collapse-title !py-0 px-4 flex items-center cursor-pointer hover:bg-gray-100 dark:hover:bg-[#373f59]"
+            class="collapse-title !py-0 -mt-14 px-4 flex items-center cursor-pointer hover:bg-gray-100 dark:hover:bg-[#373f59]"
           >
             <Icon
               v-if="item?.icon?.icon"
@@ -125,16 +132,6 @@ dayjs()
                 'text-blue-500': item?.title !== 'Favorite',
               }"
             />
-            <img
-              v-if="item?.icon?.image"
-              :src="item?.icon?.image"
-              class="w-6 h-6 rounded-full mr-3"
-            />
-            <div
-              class="text-base capitalize flex-1 text-gray-700 dark:text-gray-200 whitespace-nowrap"
-            >
-              {{ item?.title }}
-            </div>
             <div
               v-if="item?.badgeContent"
               class="mr-6 badge badge-sm text-white border-none"
@@ -143,12 +140,15 @@ dayjs()
               {{ item?.badgeContent }}
             </div>
           </div>
-          <div class="collapse-content">            
-            <div v-for="(el, key) of item?.children" class="menu bg-base-100 w-full !p-0">
+          <div class="collapse-content">
+            <div
+              v-for="(el, key) of item?.children"
+              class="menu bg-base-100 w-full !p-0"
+            >
               <RouterLink
                 v-if="isNavLink(el)"
                 @click="sidebarShow = false"
-                class="hover:bg-gray-100 dark:hover:bg-[#373f59] rounded cursor-pointer px-3 py-2 flex items-center"
+                class="hover:bg-gray-100 dark:hover:bg-[#373f59] bg-[#ffffff] dark:bg-[#2B2B2B] rounded cursor-pointer px-3 py-2 flex items-center"
                 :class="{
                   '!bg-primary': selected($route, el),
                 }"
@@ -167,9 +167,10 @@ dayjs()
                 <img
                   v-if="el?.icon?.image"
                   :src="el?.icon?.image"
-                  class="w-6 h-6 rounded-full mr-3 ml-4 " :class="{
-                  'border border-gray-300 bg-white': selected($route, el),
-                }"
+                  class="w-6 h-6 rounded-full mr-3 ml-4"
+                  :class="{
+                    'border border-gray-300 bg-white': selected($route, el),
+                  }"
                 />
                 <div
                   class="text-base capitalize text-gray-500 dark:text-gray-300"
@@ -181,21 +182,24 @@ dayjs()
                 </div>
               </RouterLink>
             </div>
-            <div v-if="index === 0 && dashboard.networkType === NetworkType.Testnet" class="menu bg-base-100 w-full !p-0">
-              <RouterLink 
-              class="hover:bg-gray-100 dark:hover:bg-[#373f59] rounded cursor-pointer px-3 py-2 flex items-center"
-              :to="`/${blockchain.chainName}/faucet`">
-                <Icon
-                  icon="mdi:chevron-right"
-                  class="mr-2 ml-3"
-                  ></Icon>
+            <div
+              v-if="
+                index === 0 && dashboard.networkType === NetworkType.Testnet
+              "
+              class="menu bg-base-100 w-full !p-0"
+            >
+              <RouterLink
+                class="hover:bg-gray-100 dark:hover:bg-[#373f59] rounded cursor-pointer px-3 py-2 flex items-center"
+                :to="`/${blockchain.chainName}/faucet`"
+              >
+                <Icon icon="mdi:chevron-right" class="mr-2 ml-3"></Icon>
                 <div
                   class="text-base capitalize text-gray-500 dark:text-gray-300"
                 >
                   Faucet
                 </div>
                 <div
-                  class="badge badge-sm text-white border-none badge-error ml-auto" 
+                  class="badge badge-sm text-white border-none badge-error ml-auto"
                 >
                   New
                 </div>
@@ -231,7 +235,7 @@ dayjs()
           </div>
           <div
             v-if="item?.badgeContent"
-            class="badge badge-sm text-white border-none" 
+            class="badge badge-sm text-white border-none"
             :class="item?.badgeClass"
           >
             {{ item?.badgeContent }}
@@ -245,68 +249,22 @@ dayjs()
         </div>
       </div>
       <div class="px-2">
-          <div class="px-4 text-sm pt-2 text-gray-400 pb-2 uppercase">
-            Tools
-          </div>
-          <RouterLink to="/wallet/suggest"
+        <div class="px-4 text-sm pt-2 text-gray-400 pb-2 uppercase">Tools</div>
+        <RouterLink
+          to="/wallet/suggest"
           class="py-2 px-4 flex items-center cursor-pointer rounded-lg hover:bg-gray-100 dark:hover:bg-[#373f59]"
+        >
+          <Icon icon="mdi:frequently-asked-questions" class="text-xl mr-2" />
+          <div
+            class="text-base capitalize flex-1 text-gray-600 dark:text-gray-200"
           >
-            <Icon icon="mdi:frequently-asked-questions" class="text-xl mr-2" />
-            <div
-              class="text-base capitalize flex-1 text-gray-600 dark:text-gray-200"
-            >
-              Wallet Helper
-            </div>
-          </RouterLink>
-          <div class="px-4 text-sm pt-2 text-gray-400 pb-2 uppercase">
-          {{ $t('module.sponsors') }}
+            Wallet Helper
+          </div>
+        </RouterLink>
+
+        <div class="px-4 text-sm pt-2 text-gray-400 pb-2 uppercase">
+          {{ $t('module.links') }}
         </div>
-        <a
-          href="https://osmosis.zone"
-          target="_blank"
-          class="py-2 px-4 flex items-center cursor-pointer rounded-lg hover:bg-gray-100 dark:hover:bg-[#373f59]"
-        >
-          <img
-            src="https://ping.pub/logos/osmosis.jpg"
-            class="w-6 h-6 rounded-full mr-3"
-          />
-          <div
-            class="text-sm capitalize flex-1 text-gray-600 dark:text-gray-200"
-          >
-            Osmosis
-          </div>
-        </a>
-        <a
-          href="https://celestia.org"
-          target="_blank"
-          class="py-2 px-4 flex items-center cursor-pointer rounded-lg hover:bg-gray-100 dark:hover:bg-[#373f59]"
-        >
-          <img
-            src="https://ping.pub/logos/celestia.png"
-            class="w-6 h-6 rounded-full mr-3"
-          />
-          <div
-            class="text-sm capitalize flex-1 text-gray-600 dark:text-gray-200"
-          >
-            Celestia
-          </div>
-        </a>
-        <a
-          href="https://becole.com"
-          target="_blank"
-          class="py-2 px-4 flex items-center cursor-pointer rounded-lg hover:bg-gray-100 dark:hover:bg-[#373f59]"
-        >
-          <img
-            src="https://becole.com/static/logo/logo_becole.png"
-            class="w-6 h-6 rounded-full mr-3"
-          />
-          <div
-            class="text-sm capitalize flex-1 text-gray-600 dark:text-gray-200"
-          >
-            Becole
-          </div>
-        </a>
-        <div class="px-4 text-sm pt-2 text-gray-400 pb-2 uppercase">{{ $t('module.links') }}</div>
         <a
           href="https://twitter.com/ping_pub"
           target="_blank"
@@ -349,14 +307,12 @@ dayjs()
     <div class="xl:!ml-64 px-3 pt-4">
       <!-- header -->
       <div
-        class="flex items-center py-3 bg-base-100 mb-4 rounded px-4 sticky top-0 z-10"
+        class="flex items-center py-3 bg-[#ffffff] dark:bg-[#2B2B2B] mb-4 rounded px-4 sticky top-0 z-10"
       >
         <div
           class="text-2xl pr-3 cursor-pointer xl:!hidden"
           @click="sidebarShow = true"
-        >
-          <Icon icon="mdi-menu" />
-        </div>
+        ></div>
 
         <ChainProfile />
 
@@ -370,17 +326,29 @@ dayjs()
       </div>
 
       <!-- 👉 Pages -->
-      <div style="min-height: calc(100vh - 180px);">
-          <div v-if="behind" class="alert alert-error mb-4">
-              <div class="flex gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                      class="stroke-current flex-shrink-0 w-6 h-6">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                  </svg>
-                  <span>{{ $t('pages.out_of_sync') }} {{ blocktime.format() }} ({{ blocktime.fromNow() }})</span>
-              </div>
+      <div style="min-height: calc(100vh - 180px)">
+        <div v-if="behind" class="alert alert-error mb-4">
+          <div class="flex gap-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              class="stroke-current flex-shrink-0 w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              ></path>
+            </svg>
+            <span
+              >{{ $t('pages.out_of_sync') }} {{ blocktime.format() }} ({{
+                blocktime.fromNow()
+              }})</span
+            >
           </div>
+        </div>
         <RouterView v-slot="{ Component }">
           <Transition mode="out-in">
             <Component :is="Component" />

@@ -1,0 +1,42 @@
+{
+  "chain_name": "manifest",
+  "api": [
+    {
+      "address": "https://nodes.chandrastation.com/api/manifest/",
+      "provider": "Chandra Station"
+    }
+  ],
+  "rpc": [
+    {
+      "address": "https://nodes.chandrastation.com/rpc/manifest/",
+      "provider": "Chandra Station"
+    }
+  ],
+  "grpc": [
+    {
+      "address": "https://nodes.chandrastation.com/grpc/manifest/",
+      "provider": "Chandra Station"
+    }
+  ],
+  "sdk_version": "0.50.6",
+  "coin_type": "118",
+  "min_tx_fee": "800",
+  "assets": [
+    {
+      "base": "umfx",
+      "symbol": "MFX",
+      "exponent": "6",
+      "coingecko_id": "manifest",
+      "logo": "https://avatars.githubusercontent.com/u/90303796?s=200&v=4"
+    }
+  ],
+  "addr_prefix": "manifest",
+  "theme_color": "#38C7B4",
+  "logo": "https://avatars.githubusercontent.com/u/90303796?s=200&v=4",
+  "faucet": {
+    "amount": "5000000umfx,50000000uosmo",
+    "ip_limit": "1",
+    "address_limit": "10",
+    "fees": "1000umfx"
+  }
+}
