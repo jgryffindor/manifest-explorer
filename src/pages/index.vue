@@ -71,7 +71,6 @@ const featured = computed(() => {
         <div class="grid md:grid-cols-3 gap-8">
           <div
             class="card bg-[#ffffff] dark:bg-[#2B2B2B] dark:bg-[#2B2B2B] shadow-xl cursor-pointer"
-            @click="openSearchModal"
           >
             <div class="card-body">
               <Icon icon="mdi:magnify" class="text-4xl text-primary mb-4" />

@@ -156,7 +156,7 @@ function suggest() {
       // @ts-ignore
       window.keplr
         .experimentalSuggestChain(JSON.parse(conf.value))
-        .catch((e) => {
+        .catch((e: string) => {
           error.value = e;
         });
     }
