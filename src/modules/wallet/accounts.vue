@@ -206,7 +206,9 @@ async function loadBalances(
 <template>
   <div>
     <div class="overflow-x-auto w-full rounded-md">
-      <div class="flex flex-wrap justify-between bg-base-100 p-5">
+      <div
+        class="flex flex-wrap justify-between bg-[#ffffff] dark:bg-[#2B2B2B] p-5"
+      >
         <div class="min-w-0">
           <h2
             class="text-2xl font-bold leading-7 sm:!truncate sm:!text-3xl sm:!tracking-tight"
@@ -253,7 +255,7 @@ async function loadBalances(
     <div class="overflow-x-auto">
       <div
         v-for="{ key, subaccounts } in accounts"
-        class="bg-base-100 rounded-md my-5 py-5"
+        class="bg-[#ffffff] dark:bg-[#2B2B2B] rounded-md my-5 py-5"
       >
         <div class="flex justify-self-center">
           <div class="mx-2 p-2">
@@ -301,7 +303,7 @@ async function loadBalances(
               >
               <ul
                 tabindex="0"
-                class="-left-14 dropdown-content menu p-2 shadow bg-base-200 rounded-box z-50"
+                class="-left-14 dropdown-content menu p-2 shadow bg-[#f7fafc] dark:bg-[#252525] rounded-box z-50"
               >
                 <li v-for="x in subaccounts">
                   <a>
@@ -324,7 +326,7 @@ async function loadBalances(
             </div>
           </div>
         </div>
-        <div class="p-4 bg-base-200 mt-2">Delegations</div>
+        <div class="p-4 bg-[#f7fafc] dark:bg-[#252525] mt-2">Delegations</div>
         <div>
           <ul class="!menu w-full">
             <div v-for="x in subaccounts">
@@ -365,7 +367,7 @@ async function loadBalances(
             </div>
           </ul>
         </div>
-        <div class="p-4 bg-base-200">Balances</div>
+        <div class="p-4 bg-[#f7fafc] dark:bg-[#252525]">Balances</div>
         <div>
           <ul class="!menu w-full">
             <div v-for="s in subaccounts">
@@ -401,7 +403,9 @@ async function loadBalances(
         </div>
       </div>
 
-      <div class="text-center bg-base-100 rounded-md my-4 p-4">
+      <div
+        class="text-center bg-[#ffffff] dark:bg-[#2B2B2B] rounded-md my-4 p-4"
+      >
         <a
           href="#address-modal"
           class="inline-flex items-center ml-3 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
@@ -425,7 +429,7 @@ async function loadBalances(
     </div>
     <!-- Put this part before </body> tag -->
     <div class="modal" id="address-modal">
-      <div class="modal-box">
+      <div class="modal-box bg-base-100">
         <a
           href="#"
           class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"

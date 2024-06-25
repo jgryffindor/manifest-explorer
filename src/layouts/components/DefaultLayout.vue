@@ -82,7 +82,7 @@ dayjs();
   <div class="bg-[#e2e8f0] dark:bg-[#202020]">
     <!-- sidebar -->
     <div
-      class="w-64 fixed z-50 left-0 top-0 bottom-0 overflow-auto bg-[#ffffff] dark:bg-[#2B2B2B] border-r border-gray-100 dark:border-gray-700"
+      class="w-64 fixed z-50 left-0 top-0 bottom-0 overflow-auto bg-[#ffffff] dark:bg-[#2B2B2B] border-r border-base-300 dark:border-[#202020]"
       :class="{ block: sidebarShow, 'hidden xl:!block': !sidebarShow }"
     >
       <div class="flex justify-between mt-1 pl-4 py-4 mb-1">
@@ -121,7 +121,7 @@ dayjs();
             @click="changeOpen(index)"
           />
           <div
-            class="collapse-title !py-0 -mt-14 px-4 flex items-center cursor-pointer hover:bg-gray-100 dark:hover:bg-[#373f59]"
+            class="collapse-title !py-0 -mt-14 px-4 flex items-center cursor-pointer hover:bg-gray-100 dark:hover:bg-[#252525]"
           >
             <Icon
               v-if="item?.icon?.icon"
@@ -143,12 +143,12 @@ dayjs();
           <div class="collapse-content">
             <div
               v-for="(el, key) of item?.children"
-              class="menu bg-base-100 w-full !p-0"
+              class="menu bg-[#ffffff] dark:bg-[#2B2B2B] w-full !p-0"
             >
               <RouterLink
                 v-if="isNavLink(el)"
                 @click="sidebarShow = false"
-                class="hover:bg-gray-100 dark:hover:bg-[#373f59] bg-[#ffffff] dark:bg-[#2B2B2B] rounded cursor-pointer px-3 py-2 flex items-center"
+                class="hover:bg-gray-100 dark:hover:bg-[#252525] bg-[#ffffff] dark:bg-[#2B2B2B] rounded cursor-pointer px-3 py-2 flex items-center"
                 :class="{
                   '!bg-primary': selected($route, el),
                 }"
@@ -186,10 +186,10 @@ dayjs();
               v-if="
                 index === 0 && dashboard.networkType === NetworkType.Testnet
               "
-              class="menu bg-base-100 w-full !p-0"
+              class="menu bg-[#ffffff] dark:bg-[#2B2B2B] w-full !p-0"
             >
               <RouterLink
-                class="hover:bg-gray-100 dark:hover:bg-[#373f59] rounded cursor-pointer px-3 py-2 flex items-center"
+                class="hover:bg-gray-100 dark:hover:bg-[#252525] rounded cursor-pointer px-3 py-2 flex items-center"
                 :to="`/${blockchain.chainName}/faucet`"
               >
                 <Icon icon="mdi:chevron-right" class="mr-2 ml-3"></Icon>
@@ -212,7 +212,7 @@ dayjs();
           v-if="isNavLink(item)"
           :to="item?.to"
           @click="sidebarShow = false"
-          class="cursor-pointer rounded-lg px-4 flex items-center py-2 hover:bg-gray-100 dark:hover:bg-[#373f59]"
+          class="cursor-pointer rounded-lg px-4 flex items-center py-2 hover:bg-gray-100 dark:hover:bg-[#252525]"
         >
           <Icon
             v-if="item?.icon?.icon"
@@ -252,7 +252,7 @@ dayjs();
         <div class="px-4 text-sm pt-2 text-gray-400 pb-2 uppercase">Tools</div>
         <RouterLink
           to="/wallet/suggest"
-          class="py-2 px-4 flex items-center cursor-pointer rounded-lg hover:bg-gray-100 dark:hover:bg-[#373f59]"
+          class="py-2 px-4 flex items-center cursor-pointer rounded-lg hover:bg-gray-100 dark:hover:bg-[#252525]"
         >
           <Icon icon="mdi:frequently-asked-questions" class="text-xl mr-2" />
           <div
@@ -268,7 +268,7 @@ dayjs();
         <a
           href="https://twitter.com/ping_pub"
           target="_blank"
-          class="py-2 px-4 flex items-center cursor-pointer rounded-lg hover:bg-gray-100 dark:hover:bg-[#373f59]"
+          class="py-2 px-4 flex items-center cursor-pointer rounded-lg hover:bg-gray-100 dark:hover:bg-[#252525]"
         >
           <Icon icon="mdi:twitter" class="text-xl mr-2" />
           <div
@@ -281,7 +281,7 @@ dayjs();
           v-if="showDiscord"
           href="https://discord.com/invite/CmjYVSr6GW"
           target="_blank"
-          class="py-2 px-4 flex items-center rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-[#373f59]"
+          class="py-2 px-4 flex items-center rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-[#252525]"
         >
           <Icon icon="mdi:discord" class="text-xl mr-2" />
           <div
@@ -293,7 +293,7 @@ dayjs();
         <a
           href="https://github.com/ping-pub/explorer/discussions"
           target="_blank"
-          class="py-2 px-4 flex items-center rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-[#373f59]"
+          class="py-2 px-4 flex items-center rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-[#252525]"
         >
           <Icon icon="mdi:frequently-asked-questions" class="text-xl mr-2" />
           <div
@@ -304,26 +304,26 @@ dayjs();
         </a>
       </div>
     </div>
+    <div
+      class="flex xl:!ml-64 items-center py-3 bg-[#ffffff] dark:bg-[#2B2B2B] dark:bg-[#2e2e2e] backdrop-blur-md mb-4 border-b dark:border-[#202020] border-base-300 px-4 sticky top-0 z-10"
+    >
+      <div
+        class="text-2xl pr-3 cursor-pointer xl:!hidden"
+        @click="sidebarShow = true"
+      ></div>
+
+      <ChainProfile />
+
+      <div class="flex-1 w-0"></div>
+
+      <!-- <NavSearchBar />-->
+      <NavBarI18n class="hidden md:!inline-block" />
+      <NavbarThemeSwitcher class="!inline-block" />
+      <NavbarSearch class="!inline-block" />
+      <NavBarWallet />
+    </div>
     <div class="xl:!ml-64 px-3 pt-4">
       <!-- header -->
-      <div
-        class="flex items-center py-3 bg-[#ffffff] dark:bg-[#2B2B2B] mb-4 rounded px-4 sticky top-0 z-10"
-      >
-        <div
-          class="text-2xl pr-3 cursor-pointer xl:!hidden"
-          @click="sidebarShow = true"
-        ></div>
-
-        <ChainProfile />
-
-        <div class="flex-1 w-0"></div>
-
-        <!-- <NavSearchBar />-->
-        <NavBarI18n class="hidden md:!inline-block" />
-        <NavbarThemeSwitcher class="!inline-block" />
-        <NavbarSearch class="!inline-block" />
-        <NavBarWallet />
-      </div>
 
       <!-- 👉 Pages -->
       <div style="min-height: calc(100vh - 180px)">

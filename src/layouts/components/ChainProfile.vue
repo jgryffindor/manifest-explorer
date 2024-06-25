@@ -50,7 +50,7 @@ function changeEndpoint(item: Endpoint) {
     </label>
     <div
       tabindex="0"
-      class="dropdown-content -left-6 w-80 menu shadow bg-base-200 rounded-box overflow-auto"
+      class="dropdown-content -left-6 w-80 menu shadow bg-[#f7fafc] dark:bg-[#252525] rounded-box overflow-auto"
     >
       <!-- rest -->
       <div

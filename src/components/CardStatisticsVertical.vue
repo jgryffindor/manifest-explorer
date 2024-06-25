@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
-import { controlledComputed } from '@vueuse/core'
+import { controlledComputed } from '@vueuse/core';
 
 interface Props {
   title: string;
@@ -22,7 +22,7 @@ const isPositive = controlledComputed(
 </script>
 
 <template>
-  <div class="bg-base-100 shadow rounded p-4">
+  <div class="bg-[#ffffff] dark:bg-[#2B2B2B] shadow rounded p-4">
     <div class="flex items-center justify-center">
       <div
         v-if="props.icon"
@@ -47,7 +47,7 @@ const isPositive = controlledComputed(
 
     <div class="">
       <h6 class="text-lg text-center font-semibold mt-2 mb-1">
-        {{ props.stats || '-'}}
+        {{ props.stats || '-' }}
       </h6>
       <p class="text-sm text-center">
         {{ props.title }}

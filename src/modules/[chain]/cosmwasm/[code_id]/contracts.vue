@@ -1,10 +1,7 @@
 <script lang="ts" setup>
 import { useWasmStore } from '../WasmStore';
 import { ref } from 'vue';
-import type {
-  ContractInfo,
-  PaginabledContracts,
-} from '../types';
+import type { ContractInfo, PaginabledContracts } from '../types';
 import DynamicComponent from '@/components/dynamic/DynamicComponent.vue';
 import PaginationBar from '@/components/PaginationBar.vue';
 import { PageRequest } from '@/types';
@@ -22,43 +19,46 @@ const wasmStore = useWasmStore();
 function loadContract(pageNum: number) {
   const pr = new PageRequest();
   pr.setPage(pageNum);
-  if(String(props.code_id).search(/^[\d]+$/) > -1){
+  if (String(props.code_id).search(/^[\d]+$/) > -1) {
     // query with code id
     wasmStore.wasmClient.getWasmCodeContracts(props.code_id, pr).then((x) => {
       response.value = x;
-    })
+    });
   } else {
     // query by creator
-    wasmStore.wasmClient.getWasmContractsByCreator(props.code_id, pr).then((x) => {
-      response.value = {
-        contracts: x.contract_addresses,
-        pagination: x.pagination,
-      };
-    })
+    wasmStore.wasmClient
+      .getWasmContractsByCreator(props.code_id, pr)
+      .then((x) => {
+        response.value = {
+          contracts: x.contract_addresses,
+          pagination: x.pagination,
+        };
+      });
   }
 }
 loadContract(1);
-
-
 
 function showInfo(address: string) {
   wasmStore.wasmClient.getWasmContracts(address).then((x) => {
     info.value = x.contract_info;
   });
 }
-
 </script>
 <template>
   <div>
-    <div class="bg-base-100 px-4 pt-3 pb-4 rounded mb-4 shadow">
+    <div
+      class="bg-[#ffffff] dark:bg-[#2B2B2B] px-4 pt-3 pb-4 rounded mb-4 shadow"
+    >
       <h2 class="card-title truncate w-full">
         {{ $t('cosmwasm.contract_list_code') }}: {{ props.code_id }}
       </h2>
       <div class="overflow-x-auto">
         <table class="table table-compact w-full mt-4">
-          <thead class="bg-base-200">
+          <thead class="bg-[#f7fafc] dark:bg-[#252525]">
             <tr>
-              <th style="position: relative; z-index: 2">{{ $t('cosmwasm.contract_list') }}</th>
+              <th style="position: relative; z-index: 2">
+                {{ $t('cosmwasm.contract_list') }}
+              </th>
               <th>{{ $t('account.action') }}</th>
             </tr>
           </thead>
@@ -80,7 +80,7 @@ function showInfo(address: string) {
                   :to="`transactions?contract=${v}`"
                   class="btn btn-primary btn-xs text-xs"
                 >
-                {{ $t('cosmwasm.btn_details') }}
+                  {{ $t('cosmwasm.btn_details') }}
                 </RouterLink>
               </td>
             </tr>
@@ -108,7 +108,10 @@ function showInfo(address: string) {
 
     <input type="checkbox" id="modal-contract-detail" class="modal-toggle" />
     <label for="modal-contract-detail" class="modal cursor-pointer">
-      <label class="modal-box !w-11/12 !max-w-5xl relative p-2" for="">
+      <label
+        class="modal-box bg-base-100 !w-11/12 !max-w-5xl relative p-2"
+        for=""
+      >
         <div>
           <div class="flex items-center justify-between px-3 pt-2">
             <div class="text-lg">{{ $t('cosmwasm.contract_detail') }}</div>
@@ -125,6 +128,5 @@ function showInfo(address: string) {
         </div>
       </label>
     </label>
-
   </div>
 </template>

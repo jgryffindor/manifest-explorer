@@ -108,7 +108,7 @@ onMounted(() => {
                 {{ chainStore.chainName }} Faucet
             </h1>
         </div>
-        <div class="bg-base-100 my-5 px-4 pt-3 pb-4 rounded shadow">
+        <div class="bg-[#ffffff] dark:bg-[#2B2B2B]  my-5 px-4 pt-3 pb-4 rounded shadow">
             <h2 class="card-title">Get Tokens</h2>
             <input type="text" v-model="address" class="mt-4 mb-4 w-full border border-gray-300 rounded-md p-2"
                 :class="{'input-error' : !validAddress}"
@@ -119,11 +119,11 @@ onMounted(() => {
 
         
 
-        <div class="bg-base-100 my-5 px-4 pt-3 pb-4 rounded shadow">
+        <div class="bg-[#ffffff] dark:bg-[#2B2B2B]  my-5 px-4 pt-3 pb-4 rounded shadow">
             <h2 class="card-title">Enable Faucet</h2>
             <div class="mt-4">
                 <span class="text-base"> 1. Submit chain configuation</span>
-                <div class="mockup-code bg-base-200 my-2 gap-4">
+                <div class="mockup-code bg-[#f7fafc] dark:bg-[#252525]  my-2 gap-4">
                     <div v-for="it in checklist">
                         <pre><code class="text-gray-800 dark:invert">{{ it.title }}: </code>{{ it.status ? '✅' : '❌' }} </pre>
                     </div>
@@ -135,7 +135,7 @@ onMounted(() => {
                 </div>
 
                 <span class="text-base"> 2. Fund the faucet account</span>
-                <div class="mockup-code bg-base-200 my-2">
+                <div class="mockup-code bg-[#f7fafc] dark:bg-[#252525]  my-2">
                     <pre data-prefix=">"><code class=" text-gray-800 dark:invert"> Faucet Address: {{ faucet }} </code></pre>
                     <pre
                         data-prefix=">"><code class="text-gray-800 dark:invert"> Balances: {{ format.formatTokens(balances) }} </code></pre>
@@ -144,7 +144,7 @@ onMounted(() => {
         </div>
         <input type="checkbox" v-model="faucetModal" id="my_modal_6" class="modal-toggle" />
         <div class="modal" role="dialog">
-            <div class="modal-box">
+            <div class="modal-box bg-base-100">
                 <div v-if="ret.status === 'error'">
                     <h3 class="font-bold text-red-500"> Error </h3>
                     <div>{{ ret.message }}</div>

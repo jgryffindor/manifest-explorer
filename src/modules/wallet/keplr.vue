@@ -95,7 +95,7 @@ function suggest() {
 </script>
 
 <template>
-  <div class="bg-base-100 p-4 rounded text-center">
+  <div class="bg-[#ffffff] dark:bg-[#2B2B2B] p-4 rounded text-center">
     <div class="flex">
       <select
         v-model="selected"

@@ -25,6 +25,7 @@ body {
   --text-main: #333;
   --text-secondary: #4b525d;
   --bg-active: #fbfbfc;
+  background-color: #e2e8f0;
 }
 
 html.dark,
@@ -32,6 +33,7 @@ html[data-theme='dark'] {
   --text-main: #f7f7f7;
   --text-secondary: #6f6e84;
   --bg-active: #242b40;
+  background-color: #202020;
 }
 
 .table th:first-child {

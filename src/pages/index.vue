@@ -52,7 +52,7 @@ const featured = computed(() => {
     >
       <div class="container mx-auto text-center">
         <h2 class="text-4xl font-bold mb-4 text-main">
-          Explore the Manifest Network
+          Manifest Network Explorer
         </h2>
         <p class="text-xl mb-8">
           Discover transactions, blocks, and validators in real-time
@@ -69,52 +69,69 @@ const featured = computed(() => {
     <div class="features-section py-16">
       <div class="container mx-auto">
         <div class="grid md:grid-cols-3 gap-8">
-          <div class="card bg-base-200 dark:bg-[#2B2B2B] shadow-xl">
+          <div
+            class="card bg-[#ffffff] dark:bg-[#2B2B2B] dark:bg-[#2B2B2B] shadow-xl cursor-pointer"
+            @click="openSearchModal"
+          >
             <div class="card-body">
               <Icon icon="mdi:magnify" class="text-4xl text-primary mb-4" />
               <h3 class="card-title text-main">Real-time Search</h3>
               <p>Instantly find transactions, blocks, and accounts</p>
             </div>
           </div>
-          <div class="card bg-base-200 dark:bg-[#2B2B2B] shadow-xl">
+          <div
+            class="card bg-[#ffffff] dark:bg-[#2B2B2B] dark:bg-[#2B2B2B] shadow-xl cursor-pointer"
+            @click="$router.push('/manifest')"
+          >
             <div class="card-body">
               <Icon icon="mdi:chart-line" class="text-4xl text-yes mb-4" />
               <h3 class="card-title text-main">Network Statistics</h3>
               <p>View comprehensive network performance metrics</p>
             </div>
           </div>
-          <div class="card bg-base-200 dark:bg-[#2B2B2B] shadow-xl">
+          <div
+            class="card bg-[#ffffff] dark:bg-[#2B2B2B] dark:bg-[#2B2B2B] shadow-xl cursor-pointer"
+          >
             <div class="card-body">
               <Icon icon="mdi:account-group" class="text-4xl text-info mb-4" />
               <h3 class="card-title text-main">Validator Insights</h3>
-              <p>Analyze validator performance and distribution</p>
+              <p>
+                Analyze
+                <a
+                  @click.stop="$router.push('/manifest/uptime')"
+                  class="hover:underline text-primary"
+                >
+                  performance</a
+                >
+                and
+                <a
+                  @click.stop="$router.push('/manifest/staking')"
+                  class="hover:underline text-primary"
+                  >distribution</a
+                >
+              </p>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Search Section -->
     <div
       id="explore"
-      class="search-section bg-base-200 dark:bg-[#2B2B2B] py-16 px-4 rounded-lg"
+      class="search-section bg-[#ffffff] dark:bg-[#2B2B2B] dark:bg-[#2B2B2B] py-16 px-4 rounded-lg"
     >
       <div class="container mx-auto">
-        <h2 class="text-3xl font-bold mb-8 text-center text-main">
-          Explore the Network
-        </h2>
+        <h2 class="text-3xl font-bold mb-8 text-center text-main">Explore</h2>
         <div class="max-w-2xl mx-auto">
           <input
             v-model="keywords"
             type="text"
             placeholder="Search for chains, transactions, or blocks..."
-            class="input input-bordered w-full bg-white dark:bg-[#454545]"
+            class="input input-bordered w-full bg-[#2e2e2e] dark:bg-[#454545]"
           />
         </div>
       </div>
     </div>
-
-    <!-- Featured Chains -->
   </div>
 </template>
 
