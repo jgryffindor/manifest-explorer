@@ -286,7 +286,7 @@ export const useParamStore = defineStore('paramstore', {
     },
   
     async getGroups(adminAddress: string) {
-      return await this.blockchain.rpc?.getGroups(adminAddress);
+      return await this.blockchain.rpc?.getGroups();
     },
     async fetchAbciInfo() {
       return this.blockchain.rpc?.getBaseNodeInfo();
