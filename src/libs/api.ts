@@ -145,6 +145,12 @@ export const DEFAULT: RequestRegistry = {
     adapter,
   },
 
+  // poa
+  poa_params: { url: '/poa/v1/params', adapter },
+
+  // groups
+  groups_by_admin: { url: '/cosmos/group/v1/groups_by_admin/manifest1afk9zr2hn2jsac63h4hm60vl9z3e5u69gndzf7c99cqge3vzwjzsfmy9qj', adapter },
+
   // ibc
   ibc_app_ica_controller_params: {
     url: '/ibc/apps/interchain_accounts/controller/v1/params',

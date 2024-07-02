@@ -122,6 +122,9 @@ const amount = computed({
     quantity.value = val / ticker.value.converted_last.usd || 0;
   },
 });
+const umfxBalance = computed(() => {
+  return walletStore.balances.find((balance) => balance.denom === 'umfx');
+});
 </script>
 
 <template>
@@ -346,24 +349,6 @@ const amount = computed({
       </div>
     </div>
 
-    <div
-      v-if="blockchain.supportModule('governance')"
-      class="bg-[#ffffff] dark:bg-[#2B2B2B] rounded mt-4 shadow"
-    >
-      <div class="px-4 pt-4 pb-2 text-lg font-semibold text-main">
-        {{ $t('index.active_proposals') }}
-      </div>
-      <div class="px-4 pb-4">
-        <ProposalListItem :proposals="store?.proposals" />
-      </div>
-      <div
-        class="pb-8 text-center"
-        v-if="store.proposals?.proposals?.length === 0"
-      >
-        {{ $t('index.no_active_proposals') }}
-      </div>
-    </div>
-
     <div class="bg-[#ffffff] dark:bg-[#2B2B2B] rounded mt-4 shadow">
       <div
         class="flex justify-between px-4 pt-4 pb-2 text-lg font-semibold text-main"
@@ -384,37 +369,7 @@ const amount = computed({
         <div class="bg-gray-100 dark:bg-[#252525] rounded-sm px-4 py-3">
           <div class="text-sm mb-1">{{ $t('account.balance') }}</div>
           <div class="text-lg font-semibold text-main">
-            {{ format.formatToken(walletStore.balanceOfStakingToken) }}
-          </div>
-          <div class="text-sm" :class="color">
-            ${{ format.tokenValue(walletStore.balanceOfStakingToken) }}
-          </div>
-        </div>
-        <div class="bg-gray-100 dark:bg-[#252525] rounded-sm px-4 py-3">
-          <div class="text-sm mb-1">{{ $t('module.staking') }}</div>
-          <div class="text-lg font-semibold text-main">
-            {{ format.formatToken(walletStore.stakingAmount) }}
-          </div>
-          <div class="text-sm" :class="color">
-            ${{ format.tokenValue(walletStore.stakingAmount) }}
-          </div>
-        </div>
-        <div class="bg-gray-100 dark:bg-[#252525] rounded-sm px-4 py-3">
-          <div class="text-sm mb-1">{{ $t('index.reward') }}</div>
-          <div class="text-lg font-semibold text-main">
-            {{ format.formatToken(walletStore.rewardAmount) }}
-          </div>
-          <div class="text-sm" :class="color">
-            ${{ format.tokenValue(walletStore.rewardAmount) }}
-          </div>
-        </div>
-        <div class="bg-gray-100 dark:bg-[#252525] rounded-sm px-4 py-3">
-          <div class="text-sm mb-1">{{ $t('index.unbonding') }}</div>
-          <div class="text-lg font-semibold text-main">
-            {{ format.formatToken(walletStore.unbondingAmount) }}
-          </div>
-          <div class="text-sm" :class="color">
-            ${{ format.tokenValue(walletStore.unbondingAmount) }}
+            {{ format.formatToken(umfxBalance) }}
           </div>
         </div>
       </div>
@@ -507,12 +462,7 @@ const amount = computed({
           @click="dialog.open('send', {}, updateState)"
           >{{ $t('account.btn_send') }}</label
         >
-        <label
-          for="delegate"
-          class="btn !bg-info !border-info text-white"
-          @click="dialog.open('delegate', {}, updateState)"
-          >{{ $t('account.btn_delegate') }}</label
-        >
+
         <RouterLink
           to="/wallet/receive"
           class="btn !bg-info !border-info text-white hidden"

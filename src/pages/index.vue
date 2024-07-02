@@ -70,7 +70,7 @@ const featured = computed(() => {
       <div class="container mx-auto">
         <div class="grid md:grid-cols-3 gap-8">
           <div
-            class="card bg-[#ffffff] dark:bg-[#2B2B2B] dark:bg-[#2B2B2B] shadow-xl cursor-pointer"
+            class="card bg-[#ffffff] dark:bg-[#2B2B2B] shadow-xl cursor-pointer"
           >
             <div class="card-body">
               <Icon icon="mdi:magnify" class="text-4xl text-primary mb-4" />
@@ -79,17 +79,17 @@ const featured = computed(() => {
             </div>
           </div>
           <div
-            class="card bg-[#ffffff] dark:bg-[#2B2B2B] dark:bg-[#2B2B2B] shadow-xl cursor-pointer"
+            class="card bg-[#ffffff] dark:bg-[#2B2B2B] shadow-xl cursor-pointer"
             @click="$router.push('/manifest')"
           >
             <div class="card-body">
               <Icon icon="mdi:chart-line" class="text-4xl text-yes mb-4" />
-              <h3 class="card-title text-main">Network Statistics</h3>
-              <p>View comprehensive network performance metrics</p>
+              <h3 class="card-title text-main">Network Info</h3>
+              <p>View comprehensive network information</p>
             </div>
           </div>
           <div
-            class="card bg-[#ffffff] dark:bg-[#2B2B2B] dark:bg-[#2B2B2B] shadow-xl cursor-pointer"
+            class="card bg-[#ffffff] dark:bg-[#2B2B2B] shadow-xl cursor-pointer"
           >
             <div class="card-body">
               <Icon icon="mdi:account-group" class="text-4xl text-info mb-4" />
@@ -111,23 +111,6 @@ const featured = computed(() => {
               </p>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <div
-      id="explore"
-      class="search-section bg-[#ffffff] dark:bg-[#2B2B2B] dark:bg-[#2B2B2B] py-16 px-4 rounded-lg"
-    >
-      <div class="container mx-auto">
-        <h2 class="text-3xl font-bold mb-8 text-center text-main">Explore</h2>
-        <div class="max-w-2xl mx-auto">
-          <input
-            v-model="keywords"
-            type="text"
-            placeholder="Search for chains, transactions, or blocks..."
-            class="input input-bordered w-full bg-[#2e2e2e] dark:bg-[#454545]"
-          />
         </div>
       </div>
     </div>

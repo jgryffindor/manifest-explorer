@@ -39,7 +39,7 @@ function pageload(p: number) {
     <div class="bg-[#ffffff] dark:bg-[#2B2B2B] px-4 pt-3 pb-4 rounded shadow">
       <div class="flex flex-wrap gap-4 items-center">
         <h2 class="card-title py-4">{{ $t('ibc.title') }}</h2>
-        <div class="tabs tabs-boxed">
+        <div class="tabs tabs-boxed bg-[#f7fafc] dark:bg-[#252525]">
           <a
             class="tab"
             :class="{ 'tab-active': tab === 'registry' }"
@@ -71,7 +71,7 @@ function pageload(p: number) {
             <input
               v-model="ibcStore.connectionId"
               type="number"
-              class="input input-bordered w-40 join-item"
+              class="input input-bordered w-40 join-item bg-[#ffffff] dark:bg-[#2B2B2B]"
               min="0"
               :max="pageResponse.total || 0"
               :placeholder="`0~${pageResponse.total}`"

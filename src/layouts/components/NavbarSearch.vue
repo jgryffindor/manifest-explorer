@@ -2,18 +2,20 @@
 import { Icon } from '@iconify/vue';
 import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
-
 import { useBlockchain } from '@/stores';
+
 const vueRouters = useRouter();
 const blockStore = useBlockchain();
 let searchModalShow = ref(false);
 let searchQuery = ref('');
 let errorMessage = ref('');
+
 onMounted(() => {});
 
 function closeSearchModal() {
   searchModalShow.value = false;
 }
+
 function openSearchModal() {
   searchModalShow.value = true;
 }
@@ -22,6 +24,7 @@ function preventClick(event: any) {
   event.preventDefault();
   event.stopPropagation();
 }
+
 function confirm() {
   errorMessage.value = '';
   const key = searchQuery.value;
@@ -47,7 +50,6 @@ function confirm() {
       setTimeout(() => {
         closeSearchModal();
       }, 1000);
-      //     this.$router.push({ name: 'transaction', params: { chain: c.chain_name, hash: key } })
     } else if (addr.test(key)) {
       vueRouters.push({ path: `/${current}/account/${key}` });
       setTimeout(() => {
@@ -59,6 +61,7 @@ function confirm() {
   }
 }
 </script>
+
 <template>
   <div>
     <button
@@ -74,39 +77,35 @@ function confirm() {
     <!-- modal -->
     <div
       v-if="searchModalShow"
-      class="cursor-pointer modal !pointer-events-auto !opacity-100 !visible"
+      class="absolute inset-0 min-h-screen flex items-center justify-center bg-black bg-opacity-50 z-100"
       @click="closeSearchModal"
     >
       <div
-        class="relative modal-box bg-base-100 cursor-default"
-        @click="(event) => preventClick(event)"
+        class="relative bg-white dark:bg-[#2b2b2b] p-4 rounded shadow-lg max-w-lg w-full"
+        @click="preventClick"
       >
         <!-- header -->
         <div class="flex items-center justify-between">
           <div
-            class="text-lg font-bold flex flex-col md:!flex-row justify-between items-baseline"
+            class="text-lg font-bold flex flex-col md:flex-row justify-between items-baseline"
           >
             <span class="mr-2">Search</span>
-            <span class="capitalize text-sm md:!text-base"
-              >Height/Transaction/Account Address</span
-            >
+            <span class="capitalize text-sm md:text-base">
+              Height/Transaction/Account Address
+            </span>
           </div>
-          <label
-            htmlFor="modal-pool-modal"
-            class="cursor-pointer"
-            @click="closeSearchModal"
-          >
+          <button @click="closeSearchModal" class="cursor-pointer">
             <Icon
               icon="zondicons:close-outline"
               class="text-2xl text-gray-500 dark:text-gray-400"
             />
-          </label>
+          </button>
         </div>
         <!-- body -->
         <div class="mt-4">
-          <div class="">
+          <div>
             <input
-              class="input flex-1 w-full !input-bordered"
+              class="input flex-1 w-full input-bordered bg-[#f7fafc] dark:bg-[#252525]"
               v-model="searchQuery"
               placeholder="Height/Transaction/Account Address"
             />

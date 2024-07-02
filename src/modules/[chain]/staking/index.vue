@@ -264,40 +264,6 @@ loadAvatars();
           <div
             class="relative w-9 h-9 rounded overflow-hidden flex items-center justify-center mr-2"
           >
-            <Icon class="text-success" icon="mdi:trending-up" size="32" />
-            <div
-              class="absolute top-0 left-0 bottom-0 right-0 opacity-20 bg-success"
-            ></div>
-          </div>
-        </span>
-        <span>
-          <div class="font-bold">{{ format.percent(mintStore.inflation) }}</div>
-          <div class="text-xs">{{ $t('staking.inflation') }}</div>
-        </span>
-      </div>
-      <div class="flex">
-        <span>
-          <div
-            class="relative w-9 h-9 rounded overflow-hidden flex items-center justify-center mr-2"
-          >
-            <Icon class="text-primary" icon="mdi:lock-open-outline" size="32" />
-            <div
-              class="absolute top-0 left-0 bottom-0 right-0 opacity-20 bg-primary"
-            ></div>
-          </div>
-        </span>
-        <span>
-          <div class="font-bold">
-            {{ formatSeconds(staking.params?.unbonding_time) }}
-          </div>
-          <div class="text-xs">{{ $t('staking.unbonding_time') }}</div>
-        </span>
-      </div>
-      <div class="flex">
-        <span>
-          <div
-            class="relative w-9 h-9 rounded overflow-hidden flex items-center justify-center mr-2"
-          >
             <Icon
               class="text-error"
               icon="mdi:alert-octagon-outline"
@@ -383,12 +349,6 @@ loadAvatars();
                 </th>
                 <th scope="col" class="text-right uppercase">
                   {{ $t('staking.24h_changes') }}
-                </th>
-                <th scope="col" class="text-right uppercase">
-                  {{ $t('staking.commission') }}
-                </th>
-                <th scope="col" class="text-center uppercase">
-                  {{ $t('staking.actions') }}
                 </th>
               </tr>
             </thead>
@@ -492,33 +452,6 @@ loadAvatars();
                   {{ change24Text(v) }}
                 </td>
                 <!-- 👉 commission -->
-                <td class="text-right text-xs">
-                  {{
-                    format.formatCommissionRate(
-                      v.commission?.commission_rates?.rate
-                    )
-                  }}
-                </td>
-                <!-- 👉 Action -->
-                <td class="text-center">
-                  <div
-                    v-if="v.jailed"
-                    class="badge badge-error gap-2 text-white"
-                  >
-                    {{ $t('staking.jailed') }}
-                  </div>
-                  <label
-                    v-else
-                    for="delegate"
-                    class="btn btn-xs btn-primary rounded-sm capitalize"
-                    @click="
-                      dialog.open('delegate', {
-                        validator_address: v.operator_address,
-                      })
-                    "
-                    >{{ $t('account.btn_delegate') }}</label
-                  >
-                </td>
               </tr>
             </tbody>
           </table>
@@ -541,9 +474,6 @@ loadAvatars();
               class="inset-x-0 inset-y-0 opacity-10 absolute bg-warning"
             ></span>
             {{ $t('staking.top') }} 67%
-          </div>
-          <div class="text-xs hidden md:!block pl-2">
-            {{ $t('staking.description') }}
           </div>
         </div>
       </div>

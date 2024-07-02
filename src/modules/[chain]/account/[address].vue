@@ -358,7 +358,7 @@ function mapAmount(
     </div>
 
     <!-- Delegations -->
-    <div
+    <!-- <div
       class="bg-[#ffffff] dark:bg-[#2B2B2B] px-4 pt-3 pb-4 rounded mb-4 shadow"
     >
       <div class="flex justify-between">
@@ -470,10 +470,10 @@ function mapAmount(
           </tbody>
         </table>
       </div>
-    </div>
+    </div> -->
 
     <!-- Unbonding Delegations -->
-    <div
+    <!-- <div
       class="bg-[#ffffff] dark:bg-[#2B2B2B] px-4 pt-3 pb-4 rounded mb-4 shadow"
       v-if="unbonding && unbonding.length > 0"
     >
@@ -537,7 +537,7 @@ function mapAmount(
           </tbody>
         </table>
       </div>
-    </div>
+    </div> -->
 
     <!-- Transactions -->
     <div

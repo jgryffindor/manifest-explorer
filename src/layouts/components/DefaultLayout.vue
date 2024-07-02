@@ -89,7 +89,7 @@ dayjs();
         <RouterLink to="/" class="flex items-center">
           <img class="w-10 h-10" src="../../assets/logo.svg" />
           <h1 class="flex-1 ml-3 text-2xl font-semibold dark:text-white">
-            Maniscan
+            Manifest Scan
           </h1>
         </RouterLink>
         <div
@@ -270,7 +270,7 @@ dayjs();
           target="_blank"
           class="py-2 px-4 flex items-center cursor-pointer rounded-lg hover:bg-gray-100 dark:hover:bg-[#252525]"
         >
-          <Icon icon="mdi:twitter" class="text-xl mr-2" />
+          <Icon icon="simple-icons:x" class="text-xl mr-2" />
           <div
             class="text-base capitalize flex-1 text-gray-600 dark:text-gray-200"
           >
@@ -278,8 +278,7 @@ dayjs();
           </div>
         </a>
         <a
-          v-if="showDiscord"
-          href="https://discord.com/invite/CmjYVSr6GW"
+          href="https://discord.gg/kQkaJzxvk9"
           target="_blank"
           class="py-2 px-4 flex items-center rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-[#252525]"
         >
@@ -291,15 +290,15 @@ dayjs();
           </div>
         </a>
         <a
-          href="https://github.com/ping-pub/explorer/discussions"
+          href="https://github.com/ping-pub/"
           target="_blank"
           class="py-2 px-4 flex items-center rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-[#252525]"
         >
-          <Icon icon="mdi:frequently-asked-questions" class="text-xl mr-2" />
+          <Icon icon="mdi:github" class="text-xl mr-2" />
           <div
             class="text-base capitalize flex-1 text-gray-600 dark:text-gray-200"
           >
-            FAQ
+            Github
           </div>
         </a>
       </div>
@@ -313,7 +312,7 @@ dayjs();
       ></div>
 
       <ChainProfile />
-
+      <!-- filler -->
       <div class="flex-1 w-0"></div>
 
       <!-- <NavSearchBar />-->

@@ -41,8 +41,11 @@ import type {
   StakingPool,
   Validator,
 } from '@/types/staking';
+import type { AdminGroup } from '@/types/groups';
+import type { PoaParamsResponse } from '@/types/poa';
 import type { PaginatedTxs, Tx, TxResponse } from '@/types';
 import semver from 'semver'
+
 export interface Request<T> {
   url: string;
   adapter: (source: any) => Promise<T>;
@@ -102,6 +105,9 @@ export interface RequestRegistry extends AbstractRegistry {
   gov_proposals_tally: Request<{ tally: Tally }>;
   gov_proposals_votes: Request<PaginatedProposalVotes>;
   gov_proposals_votes_voter: Request<{ vote: GovVote }>;
+  groups_by_admin: Request<AdminGroup>;
+
+  poa_params: Request<PoaParamsResponse>;
 
   staking_deletations: Request<PaginatedDelegations>;
   staking_delegator_redelegations: Request<PaginatedRedelegations>;

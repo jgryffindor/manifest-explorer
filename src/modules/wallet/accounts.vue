@@ -429,7 +429,7 @@ async function loadBalances(
     </div>
     <!-- Put this part before </body> tag -->
     <div class="modal" id="address-modal">
-      <div class="modal-box bg-base-100">
+      <div class="modal-box bg-[#ffffff] dark:bg-[#2e2e2e]">
         <a
           href="#"
           class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
@@ -437,16 +437,16 @@ async function loadBalances(
         >
         <h3 class="font-bold text-lg mb-2">Derive Account From Address</h3>
         <div>
-          <label class="my-2">
+          <label class="my-2 bg-[#ffffff] dark:bg-[#2e2e2e]">
             <input
               v-model="sourceAddress"
-              class="input input-bordered w-full input-sm"
+              class="input input-bordered w-full input-sm bg-[#ffffff] dark:bg-[#2e2e2e]"
               placeholder="Input an address"
               @change="importStep = 'step2'"
             />
             <input
               v-model="sourceHdPath"
-              class="input input-bordered w-full input-sm"
+              class="input input-bordered w-full input-sm bg-[#ffffff] dark:bg-[#2e2e2e]"
               placeholder="m/44/118/0'/0/0"
             />
           </label>

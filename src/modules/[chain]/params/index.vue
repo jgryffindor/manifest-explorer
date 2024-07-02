@@ -4,6 +4,7 @@ import { ref, onMounted } from 'vue';
 import CardParameter from '@/components/CardParameter.vue';
 import ArrayObjectElement from '@/components/dynamic/ArrayObjectElement.vue';
 const store = useParamStore();
+
 const chain = ref(store.chain);
 onMounted(() => {
   // fetch the data
@@ -31,11 +32,12 @@ onMounted(() => {
     <!-- minting Parameters  -->
     <CardParameter :cardItem="store.mint" />
     <!-- Staking Parameters  -->
-    <CardParameter :cardItem="store.staking" />
+    <!-- <CardParameter :cardItem="store.staking" /> -->
     <!-- Governance Parameters -->
-    <CardParameter :cardItem="store.gov" />
+    <CardParameter :cardItem="store.poa" />
+
     <!-- Distribution Parameters -->
-    <CardParameter :cardItem="store.distribution" />
+    <!-- <CardParameter :cardItem="store.distribution" /> -->
     <!-- Slashing Parameters -->
     <CardParameter :cardItem="store.slashing" />
     <!-- Application Version -->

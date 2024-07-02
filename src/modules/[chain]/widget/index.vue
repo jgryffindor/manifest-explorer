@@ -23,8 +23,13 @@ const hdPath = computed(() => {
       <div class="my-4 grid grid-flow-col auto-cols-max overflow-auto">
         <div class="form-control">
           <div class="input-group">
-            <span>{{ $t('widget.endpoint') }}</span>
-            <select v-model="endpoint" class="select select-bordered w-fit">
+            <span class="bg-[#f7fafc] dark:bg-[#252525]">{{
+              $t('widget.endpoint')
+            }}</span>
+            <select
+              v-model="endpoint"
+              class="bg-[#ffffff] dark:bg-[#2B2B2B] select select-bordered w-fit"
+            >
               <option disabled selected>
                 {{ $t('widget.select_endpoint') }}
               </option>

@@ -30,18 +30,18 @@ export const useParamStore = defineStore('paramstore', {
           color: 'light-danger',
           value: '-',
         },
-        {
-          subtitle: 'bonded_ratio',
-          icon: 'PercentIcon',
-          color: 'light-warning',
-          value: '-',
-        },
-        {
-          subtitle: 'inflation',
-          icon: 'TrendingUpIcon',
-          color: 'light-primary',
-          value: '-',
-        },
+        // {
+        //   subtitle: 'bonded_ratio',
+        //   icon: 'PercentIcon',
+        //   color: 'light-warning',
+        //   value: '-',
+        // },
+        // {
+        //   subtitle: 'inflation',
+        //   icon: 'TrendingUpIcon',
+        //   color: 'light-primary',
+        //   value: '-',
+        // },
       ],
     },
     mint: {
@@ -56,12 +56,20 @@ export const useParamStore = defineStore('paramstore', {
       title: 'Distribution Parameters',
       items: [] as Array<any>,
     },
+    poa: {
+      title: 'POA Parameters',
+      items: [] as Array<any>,
+    },
     slashing: {
       title: 'Slashing Parameters',
       items: [] as Array<any>,
     },
     gov: {
       title: 'Governance Parameters',
+      items: [] as Array<any>,
+    },
+    groups: {
+      title: 'Admin Group',
       items: [] as Array<any>,
     },
     appVersion: {
@@ -87,6 +95,8 @@ export const useParamStore = defineStore('paramstore', {
       this.handleDistributionParams();
       this.handleGovernanceParams();
       this.handleAbciInfo();
+      this.handlePoaParams(); 
+      this.handleGroups();
     },
     async handleBaseBlockLatest() {
       try {
@@ -170,6 +180,36 @@ export const useParamStore = defineStore('paramstore', {
         ([key, value]) => ({ subtitle: key, value: value })
       );
     },
+    async handlePoaParams() {
+      try {
+
+        const res = await this.getPoaParams();
+        this.poa.items = Object.entries(res.params).map(([key, value]) => ({
+          subtitle: key,
+          value: Array.isArray(value) ? value.join(', ') : value,
+        }));
+      } catch (error) {
+        console.warn('Error fetching POA params:', error);
+      }
+    },
+
+    async handleGroups() {
+      try {
+
+        const poaParams = await this.getPoaParams();
+        const adminAddress = poaParams.params.admins[0];
+
+        if (adminAddress) {
+          const res = await this.getGroups(adminAddress);
+          this.groups.items = res.groups.map(group => ({
+            subtitle: `Group ${group.id}`,
+            value: `Admin: ${group.admin}, Total Weight: ${group.total_weight}`,
+          }));
+        }
+      } catch (error) {
+        console.warn('Error fetching groups:', error);
+      }
+    },
     async handleGovernanceParams() {
       const excludes = this.blockchain.current?.excludes;
       if (excludes && excludes.indexOf('governance') > -1) {
@@ -239,6 +279,14 @@ export const useParamStore = defineStore('paramstore', {
     },
     async getGovParamsTally() {
       return await this.blockchain.rpc?.getGovParamsTally();
+    },
+      
+    async getPoaParams() {
+      return await this.blockchain.rpc?.getPoaParams();
+    },
+  
+    async getGroups(adminAddress: string) {
+      return await this.blockchain.rpc?.getGroups(adminAddress);
     },
     async fetchAbciInfo() {
       return this.blockchain.rpc?.getBaseNodeInfo();

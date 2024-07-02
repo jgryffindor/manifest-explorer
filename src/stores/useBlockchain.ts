@@ -92,6 +92,9 @@ export const useBlockchain = defineStore('blockchain', {
                   !this.current?.features ||
                   this.current.features.includes(String(x.meta.i18n))
               ) // filter none-custom module
+              // filter governance and cosmwasm pages
+              .filter((x) => x.meta.i18n !== 'governance')
+              .filter((x) => x.meta.i18n !== 'cosmwasm')
               .map((x) => ({
                 title: `module.${x.meta.i18n}`,
                 to: { path: x.path.replace(':chain', this.chainName) },

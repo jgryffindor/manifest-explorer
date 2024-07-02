@@ -124,6 +124,15 @@ export class CosmosRestClient extends BaseRestClient<RequestRegistry> {
       validator_address,
     });
   }
+  // poa
+  async getPoaParams() {
+    return this.request(this.registry.poa_params, {});
+  }
+
+  // group
+  async getGroups() {
+    return this.request(this.registry.groups_by_admin, {});
+  }
   // Slashing
   async getSlashingParams() {
     return this.request(this.registry.slashing_params, {});
