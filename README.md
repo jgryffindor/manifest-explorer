@@ -2,11 +2,11 @@
 
 ![Manifest Explorer](./public/logo.svg)
 
-<h1>Maniscan</h1>
+<h1>Manifestscan</h1>
 
 </div>
 
-`Maniscan` is a fork of light explorer, [Ping.Pub]()
+`Manifestscan` is a fork of light explorer, [Ping.Pub]()
 
 ## Get Started
 

@@ -43,7 +43,7 @@ const validAddress = computed(() => {
 });
 
 const faucetUrl = computed(() => {
-    return `https://faucet.Maniscan/${chainStore.current?.chainName}`;
+    return `https://faucet.Manifestscan/${chainStore.current?.chainName}`;
     // return `http://localhost:3000/${chainStore.current?.chainName}`;
 });
 
@@ -131,7 +131,7 @@ onMounted(() => {
                     <pre class=" text-xs text-red-500">{{ configChecker }}</pre>
                     <pre></pre>
                     <a class=" btn-ghost text-white rounded-md p-2 ml-4"
-                        href="https://github.com/ping-pub/Maniscan/blob/main/faucet.md">Update</a>
+                        href="https://github.com/ping-pub/Manifestscan/blob/main/faucet.md">Update</a>
                 </div>
 
                 <span class="text-base"> 2. Fund the faucet account</span>

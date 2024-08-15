@@ -47,10 +47,10 @@ cp -r ./dist/* <ROOT_OF_WEB_SERVER>
 
 ```sh
 ./docker.sh
-docker run -d -p 8088:80 Maniscan/dashboard
+docker run -d -p 8088:80 Manifestscan/dashboard
 ```
 
-# Enable LCD for Maniscan (do this on the config for your chain)
+# Enable LCD for Manifestscan (do this on the config for your chain)
 
 1. Set `enable = true` in `./config/app.toml`
 
@@ -78,7 +78,7 @@ max-open-connections = 1000
 
 ```
 server {
-    server_name juno.api.Maniscan;
+    server_name juno.api.Manifestscan;
     listen 443;
     location / {
         add_header Access-Control-Allow-Origin *;

@@ -48,7 +48,7 @@ const changeOpen = (index: Number) => {
     sidebarOpen.value = !sidebarOpen.value;
   }
 };
-const showDiscord = window.location.host.search('Maniscan') > -1;
+const showDiscord = window.location.host.search('Manifestscan') > -1;
 
 function isNavGroup(nav: VerticalNavItems | any): nav is NavGroup {
   return (<NavGroup>nav).children !== undefined;
