@@ -2,20 +2,20 @@
   "chain_name": "manifest",
   "api": [
     {
-      "address": "https://nodes.chandrastation.com/api/manifest/",
-      "provider": "Chandra Station"
+      "address": "https://manifest-beta-rest.liftedinit.tech",
+      "provider": "Lifted Labs"
     }
   ],
   "rpc": [
     {
-      "address": "https://nodes.chandrastation.com/rpc/manifest/",
-      "provider": "Chandra Station"
+      "address": "https://manifest-beta-rpc.liftedinit.tech",
+      "provider": "Lifted Labs"
     }
   ],
   "grpc": [
     {
-      "address": "https://nodes.chandrastation.com/grpc/manifest/",
-      "provider": "Chandra Station"
+      "address": "https://manifest-beta-grpc.liftedinit.tech",
+      "provider": "Lifted Labs"
     }
   ],
   "sdk_version": "0.50.6",

@@ -1,10 +1,10 @@
 # Directory Layout
 
-** if you want to list your blockchain on Maniscan, please submit your configuration on https://github.com/ping-pub/Maniscan.git **
+** if you want to list your blockchain on Manifestscan, please submit your configuration on https://github.com/ping-pub/Manifestscan.git **
 
 - Submit configs for mainnet, go to https://github.com/ping-pub/explorer/tree/master/chains/mainnet
 
-- Submit configs for testnet, go to https://github.com/ping-pub/explorer/tree/master/chains/testnet, these configs will be enabled when you visit the domain that starts with `testnet.*`, for example `https://testnet.Maniscan`
+- Submit configs for testnet, go to https://github.com/ping-pub/explorer/tree/master/chains/testnet, these configs will be enabled when you visit the domain that starts with `testnet.*`, for example `https://testnet.Manifestscan`
 
 # Sample of Config
 
@@ -13,13 +13,13 @@
   "chain_name": "cosmos",
   "api": [
     {
-      "address": "https://cosmos.api.Maniscan",
+      "address": "https://cosmos.api.Manifestscan",
       "provider": "Ping"
     }
   ],
   "rpc": [
     {
-      "address": "https://cosmos.api.Maniscan",
+      "address": "https://cosmos.api.Manifestscan",
       "provider": "Ping"
     }
   ],
@@ -41,7 +41,7 @@
 }
 ```
 
-- **chain_name** the name to identify the chain on Maniscan, would be better to use the same one as registry
+- **chain_name** the name to identify the chain on Manifestscan, would be better to use the same one as registry
 - **api** the rest api endpoint.(make sure that CORS is enabled: `Allow-Control-Allow-Origin: *`)
 - **rpc** the rpc endpoint, make sure that the port is added. rpc endpoint is only used for state sync. it's optional.
 - **assets** Native Assets on blockchain.
